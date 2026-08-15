@@ -1,3 +1,9 @@
+wivrn (26.6.2-0ubuntu2) resolute; urgency=medium
+
+  * Fix i386 builds
+
+ -- Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>  Sat, 15 Aug 2026 09:01:39 +0200
+
 wivrn (26.6.2-0ubuntu1) resolute; urgency=medium
 
   * Initial release.

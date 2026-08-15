@@ -19,81 +19,81 @@
 	dh $@
 
 override_dh_auto_configure:
-    ifeq ($(DEB_HOST_ARCH),amd64)
-		# Server Build
-		cmake -B build-server . \
-			-G Ninja \
-			-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-			-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
-			-DWIVRN_BUILD_SERVER=ON \
-			-DWIVRN_BUILD_WIVRNCTL=ON \
-			-DWIVRN_BUILD_CLIENT=OFF \
-			-DWIVRN_BUILD_DASHBOARD=OFF \
-			-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX="/usr" \
-			-DWIVRN_USE_VAAPI=ON \
-			-DWIVRN_USE_X264=ON \
-			-DWIVRN_USE_NVENC=ON \
-			-DWIVRN_USE_VULKAN_ENCODE=ON \
-			-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
-			-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
-			-Wno-dev
+ifeq ($(DEB_HOST_ARCH),amd64)
+	# Server Build
+	cmake -B build-server . \
+		-G Ninja \
+		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DWIVRN_BUILD_SERVER=ON \
+		-DWIVRN_BUILD_WIVRNCTL=ON \
+		-DWIVRN_BUILD_CLIENT=OFF \
+		-DWIVRN_BUILD_DASHBOARD=OFF \
+		-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DWIVRN_USE_VAAPI=ON \
+		-DWIVRN_USE_X264=ON \
+		-DWIVRN_USE_NVENC=ON \
+		-DWIVRN_USE_VULKAN_ENCODE=ON \
+		-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
+		-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
+		-Wno-dev
 
-		# Dashboard Build
-		cmake -B build-dashboard . \
-			-G Ninja \
-			-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-			-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
-			-DWIVRN_BUILD_CLIENT=OFF \
-			-DWIVRN_BUILD_SERVER=OFF \
-			-DWIVRN_BUILD_WIVRNCTL=OFF \
-			-DWIVRN_BUILD_DASHBOARD=ON \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX="/usr" \
-			-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
-			-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
-			-Wno-dev
-	endif
+	# Dashboard Build
+	cmake -B build-dashboard . \
+		-G Ninja \
+		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DWIVRN_BUILD_CLIENT=OFF \
+		-DWIVRN_BUILD_SERVER=OFF \
+		-DWIVRN_BUILD_WIVRNCTL=OFF \
+		-DWIVRN_BUILD_DASHBOARD=ON \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
+		-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
+		-Wno-dev
+endif
 
-	ifeq ($(DEB_HOST_ARCH),i386)
-		# 32-bit Server Library Build
-		PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
-			-G Ninja \
-			-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-			-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
-			-DCMAKE_C_FLAGS="-m32" \
-			-DCMAKE_CXX_FLAGS="-m32" \
-			-DWIVRN_BUILD_CLIENT=OFF \
-			-DWIVRN_BUILD_SERVER=OFF \
-			-DWIVRN_BUILD_WIVRNCTL=OFF \
-			-DWIVRN_BUILD_SERVER_LIBRARY=ON \
-			-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
-			-DWIVRN_OPENXR_MANIFEST_ABI=ON \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX="/usr" \
-			-DCMAKE_INSTALL_LIBDIR="lib/i386-linux-gnu" \
-			-DVulkan_LIBRARY=/usr/lib/i386-linux-gnu/libvulkan.so \
-			-DVulkan_INCLUDE_DIR=/usr/include \
-			-Wno-dev
-		endif
+ifeq ($(DEB_HOST_ARCH),i386)
+	# 32-bit Server Library Build
+	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
+		-G Ninja \
+		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DCMAKE_C_FLAGS="-m32" \
+		-DCMAKE_CXX_FLAGS="-m32" \
+		-DWIVRN_BUILD_CLIENT=OFF \
+		-DWIVRN_BUILD_SERVER=OFF \
+		-DWIVRN_BUILD_WIVRNCTL=OFF \
+		-DWIVRN_BUILD_SERVER_LIBRARY=ON \
+		-DWIVRN_OPENXR_MANIFEST_TYPE=relative \
+		-DWIVRN_OPENXR_MANIFEST_ABI=ON \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_INSTALL_LIBDIR="lib/i386-linux-gnu" \
+		-DVulkan_LIBRARY=/usr/lib/i386-linux-gnu/libvulkan.so \
+		-DVulkan_INCLUDE_DIR=/usr/include \
+		-Wno-dev
+endif
 
 # Schritt 2: Kompilieren (override_dh_auto_build)
 override_dh_auto_build:
-	ifeq ($(DEB_HOST_ARCH),amd64)
-		cmake --build build-server
-		cmake --build build-dashboard
-	endif
-	ifeq ($(DEB_HOST_ARCH),i386)
-		cmake --build build-server-32
-	endif
+ifeq ($(DEB_HOST_ARCH),amd64)
+	cmake --build build-server
+	cmake --build build-dashboard
+endif
+ifeq ($(DEB_HOST_ARCH),i386)
+	cmake --build build-server-32
+endif
 
 # Schritt 3: Installation im Paket-Dateisystem (override_dh_auto_install)
 override_dh_auto_install:
-	ifeq ($(DEB_HOST_ARCH),amd64)
-		DESTDIR=$(CURDIR)/debian/tmp cmake --install build-server
-		DESTDIR=$(CURDIR)/debian/tmp cmake --install build-dashboard
-	endif
-	ifeq ($(DEB_HOST_ARCH),i386)
-		DESTDIR=$(CURDIR)/debian/tmp cmake --install build-server-32
-	endif
+ifeq ($(DEB_HOST_ARCH),amd64)
+	DESTDIR=$(CURDIR)/debian/tmp cmake --install build-server
+	DESTDIR=$(CURDIR)/debian/tmp cmake --install build-dashboard
+endif
+ifeq ($(DEB_HOST_ARCH),i386)
+	DESTDIR=$(CURDIR)/debian/tmp cmake --install build-server-32
+endif
