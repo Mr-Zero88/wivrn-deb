@@ -5,6 +5,12 @@ Maintainer: Mr-Zero88 <huesmann-mats+ppa@gmail.com>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13),
+ cmake,
+ ninja-build,
+ g++-multilib,
+ pkg-config,
+ libvulkan-dev,
+ libvulkan-dev:i386,
  libx264-dev,
  libavcodec-dev,
  libavutil-dev,
