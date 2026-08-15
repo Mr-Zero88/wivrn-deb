@@ -1,7 +1,7 @@
 Source: wivrn
-Section: unknown
+Section: games
 Priority: optional
-Maintainer: Mr-Zero88 <huesmann-mats+ppa@gmail.com>
+Maintainer: Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13),
