@@ -55,7 +55,7 @@ override_dh_auto_configure:
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
 		-DCMAKE_INSTALL_LIBDIR="lib32" \
-		-DVulkan_LIBRARY=/usr/lib32/libvulkan.so \
+		-DVulkan_LIBRARY=/usr/lib/i386-linux-gnu/libvulkan.so \
 		-DVulkan_INCLUDE_DIR=/usr/include \
 		-Wno-dev
 
