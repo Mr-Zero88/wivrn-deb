@@ -1,0 +1,5 @@
+Version: 5
+
+Source: https://github.com/WiVRn/WiVRn.git
+Mode: git
+Matching-Pattern: refs/tags/v?(\d[\d.]*)
