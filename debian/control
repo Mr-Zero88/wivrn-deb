@@ -1,0 +1,48 @@
+Source: wivrn
+Section: unknown
+Priority: optional
+Maintainer: Mr-Zero88 <huesmann-mats+ppa@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ libx264-dev,
+ libavcodec-dev,
+ libavutil-dev,
+ libbsd-dev,
+ libavahi-client-dev,
+ libavahi-glib-dev,
+ libeigen3-dev,
+ nlohmann-json3-dev,
+ librsvg2-dev,
+ libdrm-dev,
+ libglib2.0-dev-bin,
+ libpipewire-0.3-dev,
+ libcli11-dev,
+ libnotify-dev,
+ libarchive-dev,
+ libudev-dev,
+ libboost-all-dev,
+ libsystemd-dev,
+ extra-cmake-modules,
+ libarchive-dev,
+ libboost-all-dev,
+ libkf6coreaddons-dev,
+ libkf6qqc2desktopstyle-dev,
+ libkf6iconthemes-dev,
+ libkirigami-dev,
+ librsvg2-dev,
+ nlohmann-json3-dev,
+ qcoro-qt6-dev,
+ qml6-module-org-kde-kirigamiaddons-formcard
+Standards-Version: 4.7.2
+Homepage: https://github.com/WiVRn/WiVRn
+#Vcs-Browser: https://salsa.debian.org/debian/wivrn
+#Vcs-Git: https://salsa.debian.org/debian/wivrn.git
+
+Package: wivrn
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: A wireless Monado-based OpenXR runtime for standalone headsets.
+ WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
