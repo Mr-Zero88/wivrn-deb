@@ -56,7 +56,7 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends}
 Recommends:
- wivrn-lib32 (= ${binary:Version})
+ wivrn-server-i386 (= ${binary:Version})
 Description: A wireless Monado-based OpenXR runtime for standalone headsets. (server)
  WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
  This package contains the main WiVRn server and the wivrnctl tool.
@@ -71,7 +71,7 @@ Description: A wireless Monado-based OpenXR runtime for standalone headsets. (da
  WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
  This package contains the graphical user interface dashboard for WiVRn.
 
-Package: wivrn-lib32
+Package: wivrn-server-i386
 Architecture: amd64
 Depends:
  ${shlibs:Depends},
