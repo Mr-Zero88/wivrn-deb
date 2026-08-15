@@ -10,7 +10,6 @@ Build-Depends:
  g++-multilib,
  pkg-config,
  libvulkan-dev,
- libvulkan-dev:i386,
  libssl-dev,
  glslang-tools,
  spirv-tools,
@@ -50,17 +49,6 @@ Homepage: https://github.com/WiVRn/WiVRn
 #Vcs-Browser: https://salsa.debian.org/debian/wivrn
 #Vcs-Git: https://salsa.debian.org/debian/wivrn.git
 
-Package: wivrn-server
-Architecture: amd64
-Depends:
- ${shlibs:Depends},
- ${misc:Depends}
-Recommends:
- wivrn-server-i386 (= ${binary:Version})
-Description: A wireless Monado-based OpenXR runtime for standalone headsets. (server)
- WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
- This package contains the main WiVRn server and the wivrnctl tool.
-
 Package: wivrn-dashboard
 Architecture: amd64
 Depends:
@@ -71,8 +59,21 @@ Description: A wireless Monado-based OpenXR runtime for standalone headsets. (da
  WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
  This package contains the graphical user interface dashboard for WiVRn.
 
-Package: wivrn-server-i386
+Package: wivrn-server
 Architecture: amd64
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends}
+Recommends:
+ wivrn-server:i386 (= ${binary:Version})
+Description: A wireless Monado-based OpenXR runtime for standalone headsets. (server)
+ WiVRn is an application that wirelessly streams a virtual reality game to a standalone VR headset from a Linux computer.
+ This package contains the main WiVRn server and the wivrnctl tool.
+
+Package: wivrn-server
+Architecture: i386
+Multi-Arch: same
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
