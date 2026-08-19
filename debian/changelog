@@ -1,8 +1,8 @@
 wivrn (26.6.2-0ubuntu2) resolute; urgency=medium
 
-  * Fix i386 builds
+  * Remove usr/share/bash-completion/ and usr/share/zsh/ for now as they dont get build for some reason.
 
- -- Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>  Sat, 15 Aug 2026 09:01:39 +0200
+ -- Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>  Sat, 19 Aug 2026 04:27:21 +0000
 
 wivrn (26.6.2-0ubuntu1) resolute; urgency=medium
 

@@ -3,6 +3,4 @@ usr/bin/wivrnctl
 usr/lib/firewalld/
 usr/lib/systemd/
 usr/lib/x86_64-linux-gnu/
-usr/share/bash-completion/
 usr/share/openxr/1/openxr_wivrn.json
-usr/share/zsh/
