@@ -1,3 +1,9 @@
+wivrn (26.6.2-0ubuntu3) resolute; urgency=medium
+
+  * Add missing dependency for wivrn-dashboard package
+
+ -- Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>  Sat, 19 Aug 2026 06:37:45 +0000
+
 wivrn (26.6.2-0ubuntu2) resolute; urgency=medium
 
   * Remove usr/share/bash-completion/ and usr/share/zsh/ for now as they dont get build for some reason.
