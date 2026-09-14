@@ -23,8 +23,7 @@ ifeq ($(DEB_HOST_ARCH),amd64)
 	# Server Build
 	cmake -B build-server . \
 		-G Ninja \
-		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_TAG=v$(DEB_VERSION_UPSTREAM) \
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
 		-DFETCHCONTENT_BASE_DIR=$(CURDIR)/dependencies \
 		-DWIVRN_BUILD_SERVER=ON \
@@ -45,8 +44,7 @@ ifeq ($(DEB_HOST_ARCH),amd64)
 	# Dashboard Build
 	cmake -B build-dashboard . \
 		-G Ninja \
-		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_TAG=v$(DEB_VERSION_UPSTREAM) \
 		-DWIVRN_BUILD_CLIENT=OFF \
 		-DWIVRN_BUILD_SERVER=OFF \
 		-DWIVRN_BUILD_WIVRNCTL=OFF \
@@ -62,8 +60,7 @@ ifeq ($(DEB_HOST_ARCH),i386)
 	# 32-bit Server Library Build
 	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
 		-G Ninja \
-		-DGIT_DESC=v$(DEB_VERSION_UPSTREAM) \
-		-DGIT_COMMIT=v$(DEB_VERSION_UPSTREAM) \
+		-DGIT_TAG=v$(DEB_VERSION_UPSTREAM) \
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
 		-DFETCHCONTENT_BASE_DIR=$(CURDIR)/dependencies \
 		-DCMAKE_C_FLAGS="-m32" \
@@ -101,3 +98,6 @@ endif
 ifeq ($(DEB_HOST_ARCH),i386)
 	DESTDIR=$(CURDIR)/debian/tmp cmake --install build-server-32
 endif
+	echo "Creating PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES environment variable"
+	mkdir -p $(CURDIR)/debian/tmp/usr/lib/environment.d
+	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $(CURDIR)/debian/tmp/usr/lib/environment.d/wivrn.conf

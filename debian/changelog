@@ -1,3 +1,9 @@
+wivrn (26.9-0ubuntu1) resolute; urgency=medium
+
+  * Version 26.9
+
+ -- Mats Huesmann (Mr-Zero88) <huesmann.mats@gmail.com>  Mon, 14 Sep 2026 02:40:37 +0200
+
 wivrn (26.6.2-0ubuntu3) resolute; urgency=medium
 
   * Add missing dependency for wivrn-dashboard package
